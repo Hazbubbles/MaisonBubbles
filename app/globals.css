@@ -1,26 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Écru : approximation du Pantone 11-0809 TPX fourni. À ajuster si besoin. */
+  --background: #f3ecdd;
+  /* Navy du logo "Maison Bubble's" : approximation visuelle. */
+  --foreground: #262156;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-ecru: var(--background);
+  --color-brand: var(--foreground);
+  --font-sans: var(--font-jost);
+  --font-brand: var(--font-jost);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jost), Arial, Helvetica, sans-serif;
 }
