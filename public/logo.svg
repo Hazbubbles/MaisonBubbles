@@ -1,0 +1,6 @@
+<svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="14" width="32" height="32" rx="4" fill="#b3794a"/>
+  <rect x="4" y="14" width="32" height="8" fill="#8f5f38"/>
+  <rect x="18" y="14" width="4" height="32" fill="#f4e3c9"/>
+  <text x="46" y="38" font-family="sans-serif" font-size="24" font-weight="600" fill="#2f2a26">Ta Boutique</text>
+</svg>
