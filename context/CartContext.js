@@ -76,7 +76,10 @@ export function CartProvider({ children }) {
     })
     .filter(Boolean);
 
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+  // On compte sur detailedItems (et non items) pour ignorer d'éventuels
+  // produits qui n'existent plus au catalogue mais traînent encore dans un
+  // panier sauvegardé — sinon le compteur afficherait des articles fantômes.
+  const totalItems = detailedItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalCents = detailedItems.reduce(
     (sum, item) => sum + item.product.priceCents * item.quantity,
     0

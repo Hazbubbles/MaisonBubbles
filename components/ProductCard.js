@@ -1,36 +1,38 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
-import { useCart } from "@/context/CartContext";
+import Link from "next/link";
+import AddToCartButton from "@/components/AddToCartButton";
 import { formatPrice } from "@/lib/products";
 
 export default function ProductCard({ product }) {
-  const { addItem } = useCart();
-  const [justAdded, setJustAdded] = useState(false);
-
-  function handleAdd() {
-    addItem(product.id);
-    setJustAdded(true);
-    setTimeout(() => setJustAdded(false), 1500);
-  }
-
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white">
-      <div className="relative aspect-square w-full bg-zinc-50">
+    <div className="flex flex-col">
+      <Link
+        href={`/coffret/${product.id}`}
+        className="relative aspect-[3/4] w-full overflow-hidden bg-brand/5"
+      >
         <Image src={product.image} alt={product.name} fill className="object-cover" />
-      </div>
-      <div className="flex flex-1 flex-col gap-2 p-5">
-        <h2 className="text-lg font-semibold">{product.name}</h2>
-        <p className="flex-1 text-sm text-zinc-600">{product.description}</p>
-        <p className="text-xl font-semibold">{formatPrice(product.priceCents)}</p>
-        <button
-          onClick={handleAdd}
-          className="mt-2 rounded-full bg-black px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
-        >
-          {justAdded ? "Ajouté ✓" : "Ajouter au panier"}
-        </button>
-      </div>
+      </Link>
+
+      <h3 className="mt-6 text-lg uppercase tracking-[0.15em] text-brand">
+        <Link href={`/coffret/${product.id}`} className="hover:opacity-70">
+          {product.name}
+        </Link>
+      </h3>
+
+      <p className="mt-2 text-brand/80">{formatPrice(product.priceCents)}</p>
+
+      <Link
+        href={`/coffret/${product.id}`}
+        className="mt-4 text-sm uppercase tracking-[0.15em] text-brand hover:opacity-70"
+      >
+        Découvrir →
+      </Link>
+
+      <AddToCartButton
+        productId={product.id}
+        className="mt-4 self-start text-sm uppercase tracking-[0.15em] text-brand/70 transition-opacity hover:opacity-100 hover:text-brand"
+        prefix="+ "
+      />
     </div>
   );
 }

@@ -33,6 +33,11 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# Scripts et exports Axonaut (données clients/fournisseurs) : ne doivent
+# jamais être publiés — tout ce qui est dans public/ est téléchargeable
+# publiquement sur le site.
+/public/skills
+
 # vercel
 .vercel
 
